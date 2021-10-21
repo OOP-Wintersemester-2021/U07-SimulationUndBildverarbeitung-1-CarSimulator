@@ -1,4 +1,4 @@
-# U07-1 | Car-Simulator
+# U20 | Car-Simulator
 
 Erstellen Sie ein Programm, das den Verkehr auf einer mehrspurigen
 Straße animiert:
@@ -24,7 +24,7 @@ Straße animiert:
 
 Die Klasse `Car` ist vollständig für die Berechnung der Fahrzeugfarben
 und Positionen zuständig. Aus der Klasse `Cars` werden lediglich die Methoden ` update``() ` und ` draw``() ` der Objekte der Klasse `Car` aufgerufen. Gegeben ist der folgende Code:
-
+```java
     public class Cars extends GraphicsApp {
 
         private static final int CAR_NUM = 100;
@@ -76,3 +76,4 @@ und Positionen zuständig. Aus der Klasse `Cars` werden lediglich die Methoden `
         }
 
         /* Your code here... */
+```
