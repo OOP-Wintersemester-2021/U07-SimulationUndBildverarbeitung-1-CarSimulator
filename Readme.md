@@ -20,7 +20,7 @@ Straße animiert:
 - Die Geschwindigkeit des Fahrzeugs wird ebenfalls zufällig bestimmt
   (zwischen `2.0` und `10.0`).
 
-![Cars!](docs/09_cars.png){ width=50% }
+![Cars!](./docs/09_cars.png)
 
 Die Klasse `Car` ist vollständig für die Berechnung der Fahrzeugfarben
 und Positionen zuständig. Aus der Klasse `Cars` werden lediglich die Methoden ` update``() ` und ` draw``() ` der Objekte der Klasse `Car` aufgerufen. Gegeben ist der folgende Code:
