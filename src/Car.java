@@ -20,7 +20,7 @@ public class Car {
         this.canvasWidth = canvasWidth;
         random = new Random();
 
-        int low = 0;
+        int low = 1;
         int high = 256;
 
         int r = random.nextInt(high - low) + low;

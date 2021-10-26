@@ -13,13 +13,13 @@ public class Cars extends GraphicsApp {
     private static final int CANVAS_HEIGHT = 800;
     private static final int CANVAS_WIDTH = 800;
     private static final int FRAME_RATE = 60;
-    private static final Color BACKGROUND_COLOR = Colors.WHITE;
+    private static final Color BACKGROUND_COLOR = Colors.BLACK;
 
     private static final int CAR_NUM = 100;
     private static final int CAR_WIDTH = 15;
     private static final int CAR_HEIGHT = 5;
 
-    private ArrayList<Car> cars;
+    private Car[] cars;
 
     /*
      * Die initialize-Methode wird einmalig zum Start des Programms
@@ -56,10 +56,10 @@ public class Cars extends GraphicsApp {
     }
 
     private void setupCars() {
-        cars = new ArrayList<Car>();
+        cars = new Car[CAR_NUM];
         for (int i = 0; i < CAR_NUM; i++) {
             Car car = new Car(CAR_WIDTH, CAR_HEIGHT, CANVAS_WIDTH, CANVAS_HEIGHT);
-            cars.add(car);
+            cars[i] = car;
         }
     }
 
