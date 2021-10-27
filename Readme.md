@@ -18,7 +18,7 @@ Straße animiert:
   - aus einer Karosserie und einem Dach, die die gleiche Farbe haben, aber diese Farbe inkl. Alpha-Transparenz (vgl. verfügbare Konstruktoren der Klasse `Color`) wird zufällig bestimmt
   - schwarze Reifen 
   - Wählen Sie sinnvolle geometrische Primitive aus `GraphicsApp`, um das Auto zu modellieren
-  - Fassen Sie die Bestandteile in einem ```GraphicsObject[]``` zusammen 
+  - Fassen Sie die Bestandteile des Autos in einem ```GraphicsObject[]``` zusammen 
 
 - Die Geschwindigkeit des Fahrzeugs wird ebenfalls zufällig bestimmt
   (zwischen `2.0` und `10.0`).
