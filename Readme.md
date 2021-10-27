@@ -14,8 +14,10 @@ Straße animiert:
 - Fährt ein Fahrzeug rechts aus dem Bild heraus, so wird seine
   Position wieder auf den Anfang derselben Spur gesetzt.
 
-- Jedes Fahrzeug hat eine zufällige Farbe inkl. Alpha-Transparenz
-  (vgl. verfügbare Konstruktoren der Klasse `Color`).
+- Jedes Fahrzeug besteht:
+  - aus einer Karosserie und einem Dach, die die gleiche Farbe haben, aber diese Farbe inkl. Alpha-Transparenz (vgl. verfügbare Konstruktoren der Klasse `Color`) wird zufällig bestimmt
+  - schwarze Reifen 
+  - Wählen Sie sinnvolle geometrische Primitive, die die `GraphicsApp` bereitstellt, um das Auto zu modellieren
 
 - Die Geschwindigkeit des Fahrzeugs wird ebenfalls zufällig bestimmt
   (zwischen `2.0` und `10.0`).
