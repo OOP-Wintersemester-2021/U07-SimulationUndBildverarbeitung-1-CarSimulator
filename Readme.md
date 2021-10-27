@@ -22,4 +22,4 @@ Straße animiert:
 
 ![Cars!](./docs/09_cars.png)
 
-Die Klasse `Car` ist vollständig für die Berechnung der Fahrzeugfarben und Positionen zuständig. Aus der Klasse `Cars` werden lediglich die Methoden ` update``() ` und ` draw``() ` der Objekte der Klasse `Car` aufgerufen.
+Die Klasse ```Car``` ist vollständig für die Berechnung der Fahrzeugfarben und Positionen zuständig. Aus der Klasse ```Cars``` werden lediglich die Methoden ```update()``` und ```draw()``` der Objekte der Klasse ```Car``` aufgerufen.
