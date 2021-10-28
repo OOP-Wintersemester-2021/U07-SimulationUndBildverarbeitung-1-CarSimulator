@@ -1,18 +1,19 @@
 package Cars;
 
 import de.ur.mi.oop.colors.Color;
+import de.ur.mi.oop.colors.Colors;
 import de.ur.mi.oop.graphics.Circle;
-import de.ur.mi.oop.graphics.Compound;
+import de.ur.mi.oop.graphics.GraphicsObject;
 import de.ur.mi.oop.graphics.Rectangle;
-
 import java.util.Random;
 
-public class Car {
+public class Car extends GraphicsObject {
     private float speed;
     private int canvasWidth;
 
-    // In einem Compound Objekt lassen sich in der GraphicsApp mehrere Objekte bündeln und als eines verwalten/zeichnen.
-    private Compound car;
+    // Wegen der Polymorphie können alle Grafikprimitive in einem GraphicsObject-Array gespeichert werden
+    // obwohl es sich um Kreise UND Rechtecke handelt.
+    GraphicsObject[] carParts;
 
     private static final float MIN_SPEED = 2;
     private static final float MAX_SPEED = 10;
@@ -20,6 +21,9 @@ public class Car {
     private Random random;
 
     public Car(int carWidth, int carHeight, int canvasWidth, int canvasHeight) {
+        // Der Super-Konstruktor wird aufgerufen, auch wenn die Werte nicht gebraucht werden.
+        super(0, 0, carWidth, carHeight, Colors.WHITE);
+
         this.canvasWidth = canvasWidth;
         random = new Random();
 
@@ -33,15 +37,18 @@ public class Car {
         int a = random.nextInt(high - low) + low;
 
         Color carColor = new Color(r, g, b, a);
+        this.setColor(carColor);
 
         int randomYPos = getRandomYPos(carHeight, canvasHeight);
+        setYPos(randomYPos);
         speed = getRandomSpeed();
 
-        car = new Compound(0, randomYPos);
+        carParts = new GraphicsObject[4];
         buildCar(carWidth, carHeight, carColor, randomYPos);
     }
 
     // Die buildCar-Methode baut das Auto aus der Karosserie, dem Dach und zwei Rädern zusammen.
+    // Die Bauteile des Autos werden im GraphicsObject-Array carParts gespeichert.
     private void buildCar(int carWidth, int carHeight, Color carColor, int randomYPos) {
         float bodyHeight = getBodyHeight(carHeight);
         float roofHeight = getRoofHeight(bodyHeight, carHeight);
@@ -54,11 +61,10 @@ public class Car {
         Circle leftWheel = new Circle(0 + wheelRad, randomYPos + bodyHeight, wheelRad, carColor);
         Circle rightWheel = new Circle(carWidth - wheelRad, randomYPos + bodyHeight, wheelRad, carColor);
 
-        // Die Primitive werden zum Auto zusammengefügt, indem sie dem Compuond hinzugefügt werden.
-        car.add(carBody);
-        car.add(roof);
-        car.add(leftWheel);
-        car.add(rightWheel);
+        carParts[0] = carBody;
+        carParts[1] = roof;
+        carParts[2] = leftWheel;
+        carParts[3] = rightWheel;
     }
 
     // Die Karosserie nimmt 2/3 der gesamten Höhe des Autos ein.
@@ -87,13 +93,16 @@ public class Car {
 
     private int getRandomYPos(int carHeight, int canvasHeight) {
         int laneNumTotal = canvasHeight / carHeight;
-        int laneNum = random.nextInt(laneNumTotal);
+        int laneNum = random.nextInt(laneNumTotal-1)+1;
         return laneNum * carHeight;
     }
 
-    // Da alle Primitive im Compund-Objekt gebündelt wurden, muss nur von diesem die draw-Methode aufgerufen werden.
+    // Die überschriebene draw-Methode ruft von allen GraphicsObjects im Array die draw-Methode auf.
+    @Override
     public void draw() {
-        car.draw();
+        for (int i = 0; i < carParts.length; i++) {
+            carParts[i].draw();
+        }
     }
 
     /*
@@ -101,9 +110,43 @@ public class Car {
         Fährt das Auto über den rechten Rand hinaus wird es wieder an den linken Rand zurück versetzt.
      */
     public void update() {
-        car.move(speed, 0);
-        if (car.getXPos() > canvasWidth) {
-            car.setXPos(-car.getWidth());
+        move(speed, 0);
+        if (getXPos() > canvasWidth) {
+            setXPos(-getWidth());
         }
+    }
+
+    // Die überschriebene move-Methode ruft von allen GraphicsObjects im Array due move-Methode auf.
+    @Override
+    public void move(float x, float y) {
+        for (int i = 0; i < carParts.length; i++) {
+            carParts[i].move(x, y);
+        }
+    }
+
+    /*
+        Damit die GraphicsObjects im Array ihre relative Position zu einander behalten, kann nicht die setXPos-Methode
+        jedes Primitivs aufgerufen werden.
+        Stattdessen muss berechnet werden wie weit das Auto durch die setXPos bewegt wird und das über einen Aufruf der
+        move-Methoden realisiert.
+     */
+    @Override
+    public void setXPos(float xPos) {
+        float dx = xPos - getXPos();
+        for (int i = 0; i < carParts.length; i++) {
+            carParts[i].move(dx, 0);
+        }
+    }
+
+    // Die X-Position des Autos entspricht der X-Position der Karosserie, die das längste Element des Autos ist.
+    @Override
+    public float getXPos() {
+        return carParts[0].getXPos();
+    }
+
+    // Die Breite des Autos entspricht der Breite der Karosserie, die das längste Element des Autos ist.
+    @Override
+    public float getWidth() {
+        return carParts[0].getWidth();
     }
 }
