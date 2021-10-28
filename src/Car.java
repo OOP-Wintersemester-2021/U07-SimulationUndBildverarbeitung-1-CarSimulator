@@ -48,13 +48,13 @@ public class Car {
         float roofWidth = getRoofWidth(carWidth);
         float wheelRad = getWheelRadius(carHeight);
 
-        // Die einzelnen Bauteile des Autos werden als graphische Primitive erzeugt.
+        // Die einzelnen Bauteile des Autos werden als graphische Primitive, also Rechtecke und Kreise, erzeugt.
         Rectangle carBody = new Rectangle(0, randomYPos, carWidth, bodyHeight, carColor);
         Rectangle roof = new Rectangle(roofWidth/2, randomYPos -roofHeight, roofWidth, roofHeight, carColor);
         Circle leftWheel = new Circle(0 + wheelRad, randomYPos + bodyHeight, wheelRad, carColor);
         Circle rightWheel = new Circle(carWidth - wheelRad, randomYPos + bodyHeight, wheelRad, carColor);
 
-        // Die Primitive werden zum Auto zusammengefügt, indem sie dem Compuond hinzugefügt werden.
+        // Die Primitive werden zum Auto zusammengefügt, indem sie dem Compound hinzugefügt werden.
         car.add(carBody);
         car.add(roof);
         car.add(leftWheel);
