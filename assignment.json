@@ -5,8 +5,8 @@
   "hasSolutionCode": true,
   "solutionComment": "Lösungsvorschlag zur Aufgabenstellung",
   "simpleSolutionComment": "",
-  "advancedSolutionComment": "",
+  "advancedSolutionComment": "Lösung mit GraphicsApp Compound statt eigener Klasse",
   "hasSimpleSolutionCode": false,
-  "hasAdvancedSolutionCode": false,
+  "hasAdvancedSolutionCode": true,
   "solutionAvailableOn": "2021-12-07"
 }
