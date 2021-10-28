@@ -15,8 +15,7 @@ Straße animiert:
   Position wieder auf den Anfang derselben Spur gesetzt.
 
 - Jedes Fahrzeug besteht:
-  - aus einer Karosserie und einem Dach, die die gleiche Farbe haben, aber diese Farbe inkl. Alpha-Transparenz (vgl. verfügbare Konstruktoren der Klasse `Color`) wird zufällig bestimmt
-  - schwarze Reifen 
+  - aus einer Karosserie, einem Dach und zwei Reifen, die die gleiche Farbe haben, aber diese Farbe inkl. Alpha-Transparenz (vgl. verfügbare Konstruktoren der Klasse `Color`) wird zufällig bestimmt
   - Wählen Sie sinnvolle geometrische Primitive aus `GraphicsApp`, um das Auto zu modellieren
   - Fassen Sie die Bestandteile des Autos in einem ```GraphicsObject[]``` zusammen 
 
