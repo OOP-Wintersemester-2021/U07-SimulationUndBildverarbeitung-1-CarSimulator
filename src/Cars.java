@@ -16,8 +16,8 @@ public class Cars extends GraphicsApp {
     private static final Color BACKGROUND_COLOR = Colors.WHITE;
 
     private static final int CAR_NUM = 100;
-    private static final int CAR_WIDTH = 30; // 15
-    private static final int CAR_HEIGHT = 20; // 10
+    private static final int CAR_WIDTH = 15;
+    private static final int CAR_HEIGHT = 10;
 
     private Car[] cars;
 
