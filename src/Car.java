@@ -29,7 +29,7 @@ public class Car extends GraphicsObject {
 
         // Begrenzung des Farbwertbereichs nur auf valide RGB-Werte.
         int low = 0;
-        int high = 256;
+        int high = 255;
 
         int r = random.nextInt(high - low) + low;
         int g = random.nextInt(high - low) + low;
@@ -55,7 +55,7 @@ public class Car extends GraphicsObject {
         float roofWidth = getRoofWidth(carWidth);
         float wheelRad = getWheelRadius(carHeight);
 
-        // Die einzelnen Bauteile des Autos werden als graphische Primitive erzeugt.
+        // Die einzelnen Bauteile des Autos werden als graphische Primitive, also Rechtecke und Kreise, erzeugt.
         Rectangle carBody = new Rectangle(0, randomYPos, carWidth, bodyHeight, carColor);
         Rectangle roof = new Rectangle(roofWidth/2, randomYPos -roofHeight, roofWidth, roofHeight, carColor);
         Circle leftWheel = new Circle(0 + wheelRad, randomYPos + bodyHeight, wheelRad, carColor);
