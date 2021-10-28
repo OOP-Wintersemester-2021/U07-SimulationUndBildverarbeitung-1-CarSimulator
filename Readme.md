@@ -1,4 +1,4 @@
-# U20 | Car-Simulator
+# U18 | Car-Simulator
 
 Erstellen Sie ein Programm, das den Verkehr auf einer mehrspurigen
 Straße animiert:
@@ -23,6 +23,6 @@ Straße animiert:
 - Die Geschwindigkeit des Fahrzeugs wird ebenfalls zufällig bestimmt
   (zwischen `2.0` und `10.0`).
 
-![Cars!](./docs/09_cars.png)
+![Cars!](./docs/car_gif.gif)
 
 Die Klasse ```Car``` ist vollständig für die Berechnung der Fahrzeugfarben und Positionen zuständig. Aus der Klasse ```Cars``` werden lediglich die Methoden ```update()``` und ```draw()``` der Objekte der Klasse ```Car``` aufgerufen.
