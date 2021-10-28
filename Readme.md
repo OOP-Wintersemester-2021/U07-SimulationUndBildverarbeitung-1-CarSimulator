@@ -14,66 +14,15 @@ Straße animiert:
 - Fährt ein Fahrzeug rechts aus dem Bild heraus, so wird seine
   Position wieder auf den Anfang derselben Spur gesetzt.
 
-- Jedes Fahrzeug hat eine zufällige Farbe inkl. Alpha-Transparenz
-  (vgl. verfügbare Konstruktoren der Klasse `Color`).
+- Jedes Fahrzeug besteht:
+  - aus einer Karosserie und einem Dach, die die gleiche Farbe haben, aber diese Farbe inkl. Alpha-Transparenz (vgl. verfügbare Konstruktoren der Klasse `Color`) wird zufällig bestimmt
+  - schwarze Reifen 
+  - Wählen Sie sinnvolle geometrische Primitive aus `GraphicsApp`, um das Auto zu modellieren
+  - Fassen Sie die Bestandteile des Autos in einem ```GraphicsObject[]``` zusammen 
 
 - Die Geschwindigkeit des Fahrzeugs wird ebenfalls zufällig bestimmt
   (zwischen `2.0` und `10.0`).
 
 ![Cars!](./docs/09_cars.png)
 
-Die Klasse `Car` ist vollständig für die Berechnung der Fahrzeugfarben
-und Positionen zuständig. Aus der Klasse `Cars` werden lediglich die Methoden ` update``() ` und ` draw``() ` der Objekte der Klasse `Car` aufgerufen. Gegeben ist der folgende Code:
-```java
-    public class Cars extends GraphicsApp {
-
-        private static final int CAR_NUM = 100;
-        private static final int CAR_WIDTH = 15;
-        private static final int CAR_HEIGHT = 5;
-        private static final Color BG_COLOR = Color.BLACK;
-        private static final int CANVAS_WIDTH = 600;
-        private static final int CANVAS_HEIGHT = 300;
-
-        private ArrayList<Car> cars;
-
-        public void intialize() {
-            setupCanvas();
-            setupCars();
-        }
-
-        public void draw() {
-            drawBackground(BG_COLOR);
-            drawCars();
-        }
-
-        private void setupCanvas() {
-            setCanvasSize(CANVAS_WIDTH, CANVAS_HEIGHT);
-            setFrameRate(FRAME_RATE);
-        }
-
-        /* Your code here... */
-
-    public class Car {
-
-        private float speed;
-        private Rectangle car;
-        private int canvasWidth;
-
-        private static final float MIN_SPEED = 2;
-        private static final float MAX_SPEED = 10;
-
-        private Random random;
-
-        public Car(int carWidth, int carHeight, int canvasWidth, int canvasHeight) {
-            this.canvasWidth = canvasWidth;
-            random = new Random();
-
-            Color carColor = createRandomColor();
-            int randomYPos = getRandomYPos(carHeight, canvasHeight);
-            speed = getRandomSpeed();
-
-            car = new Rectangle(0, randomYPos, carWidth, carHeight, carColor);
-        }
-
-        /* Your code here... */
-```
+Die Klasse ```Car``` ist vollständig für die Berechnung der Fahrzeugfarben und Positionen zuständig. Aus der Klasse ```Cars``` werden lediglich die Methoden ```update()``` und ```draw()``` der Objekte der Klasse ```Car``` aufgerufen.
