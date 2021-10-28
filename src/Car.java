@@ -9,8 +9,10 @@ import java.util.Random;
 
 public class Car {
     private float speed;
-    private Compound car;
     private int canvasWidth;
+
+    // In einem Compound Objekt lassen sich in der GraphicsApp mehrere Objekte bündeln und als eines verwalten/zeichnen.
+    private Compound car;
 
     private static final float MIN_SPEED = 2;
     private static final float MAX_SPEED = 10;
@@ -21,7 +23,8 @@ public class Car {
         this.canvasWidth = canvasWidth;
         random = new Random();
 
-        int low = 1;
+        // Begrenzung des Farbwertbereichs nur auf valide RGB-Werte.
+        int low = 0;
         int high = 256;
 
         int r = random.nextInt(high - low) + low;
@@ -88,10 +91,15 @@ public class Car {
         return laneNum * carHeight;
     }
 
+    // Da alle Primitive im Compund-Objekt gebündelt wurden, muss nur von diesem die draw-Methode aufgerufen werden.
     public void draw() {
         car.draw();
     }
 
+    /*
+        Das Auto wird um die in speed gespeicherte Zahl an Pixeln nach rechts bewegt.
+        Fährt das Auto über den rechten Rand hinaus wird es wieder an den linken Rand zurück versetzt.
+     */
     public void update() {
         car.move(speed, 0);
         if (car.getXPos() > canvasWidth) {
